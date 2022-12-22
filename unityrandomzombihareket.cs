@@ -40,4 +40,31 @@ public class Zombi : MonoBehaviour
                 WalkToRandomSpot();
             }
         }
+        
+        
+        private void ChasePlayer()
+    {
+        agent.SetDestination(target.transform.position);
+        if (!isRunning)
+        {
+            isRunning = true;
+            isWalking = false;
+            agent.speed = 3.5f;
+            //trigger animations
+        }
+
+    }
+    private void WalkToRandomSpot()
+    {
+        agent.speed = 0.75f;
+        randomPos = MapManager.instance.GetRandomPos();
+
+        agent.SetDestination(randomPos);
+
+        isRunning = false;
+        isWalking = true;
+        // Animations
+    }
+        
+        
     }
